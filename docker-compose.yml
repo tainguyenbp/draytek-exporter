@@ -1,0 +1,10 @@
+version: '2'
+services:
+  cisco3650_exporter:
+    build:
+      context: .
+    image: cisco3650_exporter/tainguyenbp:v1.1
+    container_name: cisco3650_exporter
+    restart: always
+    ports:
+      - 9250:9250
