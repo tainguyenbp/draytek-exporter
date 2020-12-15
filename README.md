@@ -1,4 +1,4 @@
-# Exporter monitor cisco 3650
+# Draytek exporter - Vigor exporter for hardware CPU, Memory, Build No, Version etc. written in Python with pluggable metric collectors.
 This project is built with:
 
 - Python 3.6.x
