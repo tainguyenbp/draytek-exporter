@@ -57,4 +57,25 @@ access url with port 9252:
     static_configs:
     - targets: ['192.168.1.10:9252']
 ```
+## metric collects:
 
+```
+# HELP draytek_vigor_3900_memory_usage Draytek Vigor 3900 Memory Usage
+# TYPE draytek_vigor_3900_memory_usage gauge
+draytek_vigor_3900_memory_usage{host="192.168.1.1"} 81
+# HELP draytek_vigor_3900_metric_build_date_time Draytek Vigor 3900 Build Date Time
+# TYPE draytek_vigor_3900_metric_build_date_time gauge
+draytek_vigor_3900_metric_build_date_time{host="192.168.1.1"} 2020-06-05 02:32:43
+# HELP draytek_vigor_3900_metric_cpu_usage Draytek Vigor 3900 CPU Usage
+# TYPE draytek_vigor_3900_metric_cpu_usage gauge
+draytek_vigor_3900_metric_cpu_usage{host="192.168.1.1"} 22
+# HELP draytek_vigor_3900_metric_firmware_verison Draytek Vigor 3900 Firmware Version
+# TYPE draytek_vigor_3900_metric_firmware_verison gauge
+draytek_vigor_3900_metric_firmware_verison{host="192.168.1.1"} 1.5.1.1
+# HELP draytek_vigor_3900_metric_hardware_verison Draytek Vigor 3900 Hardware Version
+# TYPE draytek_vigor_3900_metric_hardware_verison gauge
+draytek_vigor_3900_metric_hardware_verison{host="192.168.1.1"} 2 (M)
+# HELP draytek_vigor_3900_metric_model Draytek Vigor 3900 Model
+# TYPE draytek_vigor_3900_metric_model gauge
+draytek_vigor_3900_metric_model{host="192.168.1.1"} 3900
+```
