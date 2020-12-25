@@ -38,7 +38,7 @@ docker build -t draytek-exporter/tainguyenbp:v1.1 .
 
 ## Running
 
-Simply open port 9250 when running as a container:
+Simply open port 9252 when running as a container:
 
 `docker-comose up --build -d`
 
