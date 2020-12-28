@@ -56,6 +56,9 @@ def draytek_gather_data(registry):
     metric_memory_buffer = Gauge("draytek_vigor_3900_metric_memory_buffer", "Draytek Vigor 3900 Memory Buffer", {'host': host})
     metric_memory_cached = Gauge("draytek_vigor_3900_metric_memory_cached", "Draytek Vigor 3900 Memory Cached", {'host': host})
 
+    metric_load_average1 = Gauge("draytek_vigor_3900_metric_load_average1", "Draytek Vigor 3900 Load Average 1 Minutes", {'host': host})
+    metric_load_average5 = Gauge("draytek_vigor_3900_metric_load_average5", "Draytek Vigor 3900 Load Average 5 Minutes", {'host': host})
+    metric_load_average15 = Gauge("draytek_vigor_3900_metric_load_average15", "Draytek Vigor 3900 Load Average 15 Minutes", {'host': host})
 
     registry.register(metric_memory_usage)
     registry.register(metric_cpu_usage)
@@ -75,6 +78,9 @@ def draytek_gather_data(registry):
     registry.register(metric_memory_buffer)
     registry.register(metric_memory_cached)
 
+    registry.register(metric_load_average1)
+    registry.register(metric_load_average5)
+    registry.register(metric_load_average15)
 
     while True:
         time.sleep(1)
@@ -99,6 +105,8 @@ def draytek_gather_data(registry):
 
         [memory_used, memory_free, memory_shards, memory_buffer, memory_cached] = re.findall('\d+', process_array[0])
 
+        [load_average1, load_average5, load_average15] = re.findall('[0-9.]*[0-9]+', process_array[1])
+
         Memory_Usage = Memory_Usage[: len(Memory_Usage) - 1]
         CPU_usage = CPU_usage[: len(CPU_usage) - 1]
         
@@ -114,11 +122,16 @@ def draytek_gather_data(registry):
         metric_current_system_time.set({},Current_System_Time)
         metric_eeprom_version.set({},EEPROM_Version)
         metric_bootloader_version.set({},Bootloader_Version)
+
         metric_memory_used.set({},memory_used)
         metric_memory_free.set({},memory_free)
         metric_memory_shards.set({},memory_shards)
         metric_memory_buffer.set({},memory_buffer)
         metric_memory_cached.set({},memory_cached)
+
+        metric_load_average1.set({},load_average1)
+        metric_load_average5.set({},load_average5)
+        metric_load_average15.set({},load_average15)
 
         net_connect_device.disconnect()
 
