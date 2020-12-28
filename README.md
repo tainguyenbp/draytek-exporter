@@ -12,8 +12,6 @@ And is packaged as a Docker container. The two top level dependencies are:
 - prometheus==0.3.0
 - psutil==5.7.2
 
-
-
 See the [requirements file](./requirements.txt) for more details.
 
 ## Prometheus
@@ -24,6 +22,29 @@ To instrument our Python code we need to manipulate the metrics each
 time a new HTTP request is received.
 
 See [the application](./draytek-exporter.py) for more details.
+
+## Update infor device 
+Change infor ssh the device drytek:
+```
+git clone https://github.com/tainguyenbp/draytek-exporter.git
+cd draytek-exporter
+vim draytek-exporter.py
+```
+Find line the below and update variable host, username, password, port ssh:
+```
+vigor_draytek_3900 = {
+    'device_type': 'cisco_ios',
+    'host':   '192.168.1.1',
+    'username': 'admin',
+    'password': 'admin',
+    'port' : 22,
+    'secret': 'admin',
+    'verbose': False,
+    'timeout': 60,
+    'global_delay_factor': 3,
+    'conn_timeout': 60
+}
+```
 
 ## Building
 
