@@ -50,6 +50,12 @@ def draytek_gather_data(registry):
     metric_eeprom_version = Gauge("draytek_vigor_3900_metric_eeprom_version", "Draytek Vigor 3900 EEPROM Version", {'host': host})
     metric_bootloader_version = Gauge("draytek_vigor_3900_metric_bootloader_version", "Draytek Vigor 3900 BootLoader Version", {'host': host})
 
+    metric_memory_used = Gauge("draytek_vigor_3900_metric_memory_used", "Draytek Vigor 3900 Memory Used", {'host': host})
+    metric_memory_free = Gauge("draytek_vigor_3900_metric_memory_free", "Draytek Vigor 3900 Memory Free", {'host': host})
+    metric_memory_shards = Gauge("draytek_vigor_3900_metric_memory_shards", "Draytek Vigor 3900 Memory Shards", {'host': host})
+    metric_memory_buffer = Gauge("draytek_vigor_3900_metric_memory_buffer", "Draytek Vigor 3900 Memory Buffer", {'host': host})
+    metric_memory_cached = Gauge("draytek_vigor_3900_metric_memory_cached", "Draytek Vigor 3900 Memory Cached", {'host': host})
+
 
     registry.register(metric_memory_usage)
     registry.register(metric_cpu_usage)
@@ -62,6 +68,12 @@ def draytek_gather_data(registry):
     registry.register(metric_current_system_time)
     registry.register(metric_eeprom_version)
     registry.register(metric_bootloader_version)
+
+    registry.register(metric_memory_used)
+    registry.register(metric_memory_free)
+    registry.register(metric_memory_shards)
+    registry.register(metric_memory_buffer)
+    registry.register(metric_memory_cached)
 
 
     while True:
@@ -80,7 +92,12 @@ def draytek_gather_data(registry):
         result_run_command = net_connect_device.send_command(mode_enable, expect_string=r'Entering enable mode...')
         result_run_command += net_connect_device.send_command(command_status_system, expect_string=r'#')
         
+        result_run_command_process += net_connect_device.send_command(command_show_process, expect_string=r'#')
+
         [Model,Hardware_Version,Firmware_Version,Build_Date_Time,Revision,System_up_Time,CPU_usage,Memory_Size,Memory_Usage,Current_System_Time,EEPROM_Version,Bootloader_Version] = re.findall("\d.+", result_run_command)
+        process_array = re.findall("\d.+", result_run_command_process)
+
+        [memory_used, memory_free, memory_shards, memory_buffer, memory_cached] = re.findall('\d+', process_array[0])
 
         Memory_Usage = Memory_Usage[: len(Memory_Usage) - 1]
         CPU_usage = CPU_usage[: len(CPU_usage) - 1]
@@ -97,7 +114,11 @@ def draytek_gather_data(registry):
         metric_current_system_time.set({},Current_System_Time)
         metric_eeprom_version.set({},EEPROM_Version)
         metric_bootloader_version.set({},Bootloader_Version)
-
+        metric_memory_used.set({},memory_used)
+        metric_memory_free.set({},memory_free)
+        metric_memory_shards.set({},memory_shards)
+        metric_memory_buffer.set({},memory_buffer)
+        metric_memory_cached.set({},memory_cached)
 
         net_connect_device.disconnect()
 
