@@ -64,10 +64,14 @@ def draytek_gather_data(registry):
         net_connect_device = ConnectHandler(**vigor_draytek_3900)
         net_connect_device.enable()
         
-        command_show_status_system = 'status system'
-       
+        command_status_system = 'status system'
+        command_status_process = 'status process'
+
+        result_run_command_system = ''
+        result_run_command_process = ''
+
         result_run_command = net_connect_device.send_command(mode_enable, expect_string=r'Entering enable mode...')
-        result_run_command += net_connect_device.send_command(command_show_status_system, expect_string=r'#')
+        result_run_command += net_connect_device.send_command(command_status_system, expect_string=r'#')
         
         [Model,Hardware_Version,Firmware_Version,Build_Date_Time,Revision,System_up_Time,CPU_usage,Memory_Size,Memory_Usage,Current_System_Time,EEPROM_Version,Bootloader_Version] = re.findall("\d.+", result_run_command)
 
