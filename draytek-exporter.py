@@ -64,6 +64,9 @@ def draytek_gather_data(registry):
     metric_cpu_process_top_1 = Gauge("draytek_vigor_3900_metric_cpu_process_top_1", "Draytek Vigor 3900 cpu process top 1", {'host': host})
     metric_memory_process_top_1 = Gauge("draytek_vigor_3900_metric_memory_process_top_1", "Draytek Vigor 3900 memory process top 1", {'host': host})
 
+    metric_command_process_top_2 = Gauge("draytek_vigor_3900_metric_command_process_top_2", "Draytek Vigor 3900 command process top 2", {'host': host})
+    metric_cpu_process_top_2 = Gauge("draytek_vigor_3900_metric_cpu_process_top_2", "Draytek Vigor 3900 cpu process top 2", {'host': host})
+    metric_memory_process_top_2 = Gauge("draytek_vigor_3900_metric_memory_process_top_2", "Draytek Vigor 3900 memmory process top 2", {'host': host})
 
     registry.register(metric_memory_usage)
     registry.register(metric_cpu_usage)
@@ -90,6 +93,10 @@ def draytek_gather_data(registry):
     registry.register(metric_command_process_top_1)
     registry.register(metric_cpu_process_top_1)
     registry.register(metric_memory_process_top_1)
+
+    registry.register(metric_command_process_top_2)
+    registry.register(metric_cpu_process_top_2)
+    registry.register(metric_memory_process_top_2)
 
 
     while True:
@@ -148,6 +155,10 @@ def draytek_gather_data(registry):
         metric_command_process_top_1.set({},COMMAND_TOP1)
         metric_cpu_process_top_1.set({},CPU_TOP1)
         metric_memory_process_top_1.set({},MEM_TOP1)
+
+        metric_command_process_top_2.set({},COMMAND_TOP2)
+        metric_cpu_process_top_2.set({},CPU_TOP2)
+        metric_memory_process_top_2.set({},MEM_TOP2)
 
         net_connect_device.disconnect()
 
