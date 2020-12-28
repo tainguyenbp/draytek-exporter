@@ -44,6 +44,8 @@ def draytek_gather_data(registry):
     metric_hardware_verison = Gauge("draytek_vigor_3900_metric_hardware_verison", "Draytek Vigor 3900 Hardware Version", {'host': host})
     metric_firmware_verison = Gauge("draytek_vigor_3900_metric_firmware_verison", "Draytek Vigor 3900 Firmware Version", {'host': host})
     metric_build_date_time = Gauge("draytek_vigor_3900_metric_build_date_time", "Draytek Vigor 3900 Build Date Time", {'host': host})
+    metric_revision = Gauge("draytek_vigor_3900_metric_revision", "Draytek Vigor 3900 revision", {'host': host})
+    metric_system_up_time = Gauge("draytek_vigor_3900_metric_system_up_time", "Draytek Vigor 3900 system up time", {'host': host})
 
     registry.register(metric_memory_usage)
     registry.register(metric_cpu_usage)
@@ -51,6 +53,9 @@ def draytek_gather_data(registry):
     registry.register(metric_hardware_verison)
     registry.register(metric_firmware_verison)
     registry.register(metric_build_date_time)
+    registry.register(metric_revision)
+    registry.register(metric_system_up_time)
+
 
     while True:
         time.sleep(5)
@@ -73,6 +78,8 @@ def draytek_gather_data(registry):
         metric_hardware_verison.set({},Hardware_Version)
         metric_firmware_verison.set({},Firmware_Version)
         metric_build_date_time.set({},Build_Date_Time)
+        metric_revision.set({},Revision)
+        metric_system_up_time.set({},System_up_Time)
         metric_memory_usage.set({},Memory_Usage)
         metric_cpu_usage.set({},CPU_usage)
         metric_memory_size.set({},Memory_Size)
