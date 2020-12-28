@@ -58,7 +58,7 @@ def draytek_gather_data(registry):
 
 
     while True:
-        time.sleep(5)
+        time.sleep(1)
         mode_enable = 'enable'
   
         net_connect_device = ConnectHandler(**vigor_draytek_3900)
