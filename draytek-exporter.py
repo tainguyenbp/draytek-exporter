@@ -125,6 +125,15 @@ def draytek_gather_data(registry):
         [load_average1, load_average5, load_average15] = re.findall('[0-9.]*[0-9]+', process_array[1])
 
         [PID_TOP1, USER_TOP1, STATUS_TOP1, RSS_TOP1, PPID_TOP1, CPU_TOP1, MEM_TOP1, COMMAND_TOP1] = re.findall('\S+', process_array[2])
+        [PID_TOP2, USER_TOP2, STATUS_TOP2, RSS_TOP2, PPID_TOP2, CPU_TOP2, MEM_TOP2, COMMAND_TOP2] = re.findall('\S+', process_array[3])
+        [PID_TOP3, USER_TOP3, STATUS_TOP3, RSS_TOP3, PPID_TOP3, CPU_TOP3, MEM_TOP3, COMMAND_TOP3] = re.findall('\S+', process_array[4])
+        [PID_TOP4, USER_TOP4, STATUS_TOP4, RSS_TOP4, PPID_TOP4, CPU_TOP4, MEM_TOP4, COMMAND_TOP4] = re.findall('\S+', process_array[5])
+        [PID_TOP5, USER_TOP5, STATUS_TOP5, RSS_TOP5, PPID_TOP5, CPU_TOP5, MEM_TOP5, COMMAND_TOP5] = re.findall('\S+', process_array[6])
+        [PID_TOP6, USER_TOP6, STATUS_TOP6, RSS_TOP6, PPID_TOP6, CPU_TOP6, MEM_TOP6, COMMAND_TOP6] = re.findall('\S+', process_array[7])
+        [PID_TOP7, USER_TOP7, STATUS_TOP7, RSS_TOP7, PPID_TOP7, CPU_TOP7, MEM_TOP7, COMMAND_TOP7] = re.findall('\S+', process_array[8])
+        [PID_TOP8, USER_TOP8, STATUS_TOP8, RSS_TOP8, PPID_TOP8, CPU_TOP8, MEM_TOP8, COMMAND_TOP8] = re.findall('\S+', process_array[9])
+        [PID_TOP9, USER_TOP9, STATUS_TOP9, RSS_TOP9, PPID_TOP9, CPU_TOP9, MEM_TOP9, COMMAND_TOP9] = re.findall('\S+', process_array[10])
+        [PID_TOP10, USER_TOP10, STATUS_TOP10, RSS_TOP10, PPID_TOP10, CPU_TOP10, MEM_TOP10, COMMAND_TOP10] = re.findall('\S+', process_array[11])
 
         Memory_Usage = Memory_Usage[: len(Memory_Usage) - 1]
         CPU_usage = CPU_usage[: len(CPU_usage) - 1]
