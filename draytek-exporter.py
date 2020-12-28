@@ -56,9 +56,14 @@ def draytek_gather_data(registry):
     metric_memory_buffer = Gauge("draytek_vigor_3900_metric_memory_buffer", "Draytek Vigor 3900 Memory Buffer", {'host': host})
     metric_memory_cached = Gauge("draytek_vigor_3900_metric_memory_cached", "Draytek Vigor 3900 Memory Cached", {'host': host})
 
-    metric_load_average1 = Gauge("draytek_vigor_3900_metric_load_average1", "Draytek Vigor 3900 Load Average 1 Minutes", {'host': host})
-    metric_load_average5 = Gauge("draytek_vigor_3900_metric_load_average5", "Draytek Vigor 3900 Load Average 5 Minutes", {'host': host})
-    metric_load_average15 = Gauge("draytek_vigor_3900_metric_load_average15", "Draytek Vigor 3900 Load Average 15 Minutes", {'host': host})
+    metric_load_average_1 = Gauge("draytek_vigor_3900_metric_load_average_1", "Draytek Vigor 3900 Load Average 1 Minutes", {'host': host})
+    metric_load_average_5 = Gauge("draytek_vigor_3900_metric_load_average_5", "Draytek Vigor 3900 Load Average 5 Minutes", {'host': host})
+    metric_load_average_15 = Gauge("draytek_vigor_3900_metric_load_average_15", "Draytek Vigor 3900 Load Average 15 Minutes", {'host': host})
+
+    metric_command_process_top_1 = Gauge("draytek_vigor_3900_metric_command_process_top_1", "Draytek Vigor 3900 command process top 1", {'host': host})
+    metric_cpu_process_top_1 = Gauge("draytek_vigor_3900_metric_cpu_process_top_1", "Draytek Vigor 3900 cpu process top 1", {'host': host})
+    metric_memory_process_top_1 = Gauge("draytek_vigor_3900_metric_memory_process_top_1", "Draytek Vigor 3900 memory process top 1", {'host': host})
+
 
     registry.register(metric_memory_usage)
     registry.register(metric_cpu_usage)
@@ -78,9 +83,14 @@ def draytek_gather_data(registry):
     registry.register(metric_memory_buffer)
     registry.register(metric_memory_cached)
 
-    registry.register(metric_load_average1)
-    registry.register(metric_load_average5)
-    registry.register(metric_load_average15)
+    registry.register(metric_load_average_1)
+    registry.register(metric_load_average_5)
+    registry.register(metric_load_average_15)
+
+    registry.register(metric_command_process_top_1)
+    registry.register(metric_cpu_process_top_1)
+    registry.register(metric_memory_process_top_1)
+
 
     while True:
         time.sleep(1)
@@ -107,6 +117,8 @@ def draytek_gather_data(registry):
 
         [load_average1, load_average5, load_average15] = re.findall('[0-9.]*[0-9]+', process_array[1])
 
+        [PID_TOP1, USER_TOP1, STATUS_TOP1, RSS_TOP1, PPID_TOP1, CPU_TOP1, MEM_TOP1, COMMAND_TOP1] = re.findall('\S+', process_array[2])
+
         Memory_Usage = Memory_Usage[: len(Memory_Usage) - 1]
         CPU_usage = CPU_usage[: len(CPU_usage) - 1]
         
@@ -129,9 +141,13 @@ def draytek_gather_data(registry):
         metric_memory_buffer.set({},memory_buffer)
         metric_memory_cached.set({},memory_cached)
 
-        metric_load_average1.set({},load_average1)
-        metric_load_average5.set({},load_average5)
-        metric_load_average15.set({},load_average15)
+        metric_load_average_1.set({},load_average1)
+        metric_load_average_5.set({},load_average5)
+        metric_load_average_15.set({},load_average15)
+
+        metric_command_process_top_1.set({},COMMAND_TOP1)
+        metric_cpu_process_top_1.set({},CPU_TOP1)
+        metric_memory_process_top_1.set({},MEM_TOP1)
 
         net_connect_device.disconnect()
 
