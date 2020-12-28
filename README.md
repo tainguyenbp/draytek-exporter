@@ -83,20 +83,59 @@ access url with port 9252:
 ```
 # HELP draytek_vigor_3900_memory_usage Draytek Vigor 3900 Memory Usage
 # TYPE draytek_vigor_3900_memory_usage gauge
-draytek_vigor_3900_memory_usage{host="192.168.1.1"} 81
+draytek_vigor_3900_memory_usage{host="192.168.1.1"} 78
+# HELP draytek_vigor_3900_metric_bootloader_version Draytek Vigor 3900 BootLoader Version
+# TYPE draytek_vigor_3900_metric_bootloader_version gauge
+draytek_vigor_3900_metric_bootloader_version{host="192.168.1.1"} 131
 # HELP draytek_vigor_3900_metric_build_date_time Draytek Vigor 3900 Build Date Time
 # TYPE draytek_vigor_3900_metric_build_date_time gauge
 draytek_vigor_3900_metric_build_date_time{host="192.168.1.1"} 2020-06-05 02:32:43
 # HELP draytek_vigor_3900_metric_cpu_usage Draytek Vigor 3900 CPU Usage
 # TYPE draytek_vigor_3900_metric_cpu_usage gauge
-draytek_vigor_3900_metric_cpu_usage{host="192.168.1.1"} 22
+draytek_vigor_3900_metric_cpu_usage{host="192.168.1.1"} 24
+# HELP draytek_vigor_3900_metric_current_system_time Draytek Vigor 3900 Current System Time
+# TYPE draytek_vigor_3900_metric_current_system_time gauge
+draytek_vigor_3900_metric_current_system_time{host="192.168.1.1"} 28 Dec 2020 16:54:24 +0700
+# HELP draytek_vigor_3900_metric_eeprom_version Draytek Vigor 3900 EEPROM Version
+# TYPE draytek_vigor_3900_metric_eeprom_version gauge
+draytek_vigor_3900_metric_eeprom_version{host="192.168.1.1"} 40
 # HELP draytek_vigor_3900_metric_firmware_verison Draytek Vigor 3900 Firmware Version
 # TYPE draytek_vigor_3900_metric_firmware_verison gauge
 draytek_vigor_3900_metric_firmware_verison{host="192.168.1.1"} 1.5.1.1
 # HELP draytek_vigor_3900_metric_hardware_verison Draytek Vigor 3900 Hardware Version
 # TYPE draytek_vigor_3900_metric_hardware_verison gauge
 draytek_vigor_3900_metric_hardware_verison{host="192.168.1.1"} 2 (M)
+# HELP draytek_vigor_3900_metric_load_average1 Draytek Vigor 3900 Load Average 1 Minutes
+# TYPE draytek_vigor_3900_metric_load_average1 gauge
+draytek_vigor_3900_metric_load_average1{host="192.168.1.1"} 2.84
+# HELP draytek_vigor_3900_metric_load_average15 Draytek Vigor 3900 Load Average 15 Minutes
+# TYPE draytek_vigor_3900_metric_load_average15 gauge
+draytek_vigor_3900_metric_load_average15{host="192.168.1.1"} 2.02
+# HELP draytek_vigor_3900_metric_load_average5 Draytek Vigor 3900 Load Average 5 Minutes
+# TYPE draytek_vigor_3900_metric_load_average5 gauge
+draytek_vigor_3900_metric_load_average5{host="192.168.1.1"} 2.02
+# HELP draytek_vigor_3900_metric_memory_buffer Draytek Vigor 3900 Memory Buffer
+# TYPE draytek_vigor_3900_metric_memory_buffer gauge
+draytek_vigor_3900_metric_memory_buffer{host="192.168.1.1"} 0
+# HELP draytek_vigor_3900_metric_memory_cached Draytek Vigor 3900 Memory Cached
+# TYPE draytek_vigor_3900_metric_memory_cached gauge
+draytek_vigor_3900_metric_memory_cached{host="192.168.1.1"} 98752
+# HELP draytek_vigor_3900_metric_memory_free Draytek Vigor 3900 Memory Free
+# TYPE draytek_vigor_3900_metric_memory_free gauge
+draytek_vigor_3900_metric_memory_free{host="192.168.1.1"} 42128
+# HELP draytek_vigor_3900_metric_memory_shards Draytek Vigor 3900 Memory Shards
+# TYPE draytek_vigor_3900_metric_memory_shards gauge
+draytek_vigor_3900_metric_memory_shards{host="192.168.1.1"} 0
+# HELP draytek_vigor_3900_metric_memory_used Draytek Vigor 3900 Memory Used
+# TYPE draytek_vigor_3900_metric_memory_used gauge
+draytek_vigor_3900_metric_memory_used{host="192.168.1.1"} 179768
 # HELP draytek_vigor_3900_metric_model Draytek Vigor 3900 Model
 # TYPE draytek_vigor_3900_metric_model gauge
 draytek_vigor_3900_metric_model{host="192.168.1.1"} 3900
+# HELP draytek_vigor_3900_metric_revision Draytek Vigor 3900 revision
+# TYPE draytek_vigor_3900_metric_revision gauge
+draytek_vigor_3900_metric_revision{host="192.168.1.1"} 8172
+# HELP draytek_vigor_3900_metric_system_up_time Draytek Vigor 3900 system up time
+# TYPE draytek_vigor_3900_metric_system_up_time gauge
+draytek_vigor_3900_metric_system_up_time{host="192.168.1.1"} 109 days 10 hours 40 minutes 45 seconds
 ```
